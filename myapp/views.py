@@ -25,3 +25,27 @@ def create_webpage(request):
     topics=Topic.objects.all()
     return render(request,"create_webpage.html",context={'topics':topics})
 
+def display_topics(request):
+    topics=Topic.objects.all()
+    return render(request,"display_topic.html",\
+        context={'topics':topics})
+
+def display_webpages(request):
+    webpages=Webpage.objects.all()
+    return render(request,"display_webpage.html",\
+        context={'webpages':webpages})
+#accessing the specific data present in the database by passing the pk
+#in the url
+def display_topic(request,id):
+    topics=Topic.objects.filter(id=id)
+    return render(request,"display_topic.html",\
+        context={'topics':topics})
+
+def display_webpage(request,webid):
+    webpages=Webpage.objects.filter(id=webid)
+    return render(request,"display_webpage.html",\
+        context={'webpages':webpages})
+
+
+    
+
